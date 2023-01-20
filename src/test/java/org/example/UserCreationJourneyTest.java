@@ -5,8 +5,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -34,6 +37,46 @@ public class UserCreationJourneyTest {
         WebElement loginButton = driver.findElement(By.id("navbarLoginButton"));
 
         loginButton.click();
+
+        assertEquals("http://localhost:3000/#/login", driver.getCurrentUrl());
+
+        WebElement newCustomerLink = driver.findElement(By.id("newCustomerLink"));
+
+        newCustomerLink.click();
+
+        assertEquals("http://localhost:3000/#/register", driver.getCurrentUrl());
+
+        WebElement emailInput = driver.findElement(By.id("emailControl"));
+
+        Integer emailUser = new Random().nextInt(1000000);
+
+        emailInput.sendKeys(emailUser + "@email.com");
+
+        WebElement passwordInput = driver.findElement(By.id("passwordControl"));
+
+        passwordInput.sendKeys("password");
+
+        WebElement repeatPasswordInput = driver.findElement(By.id("repeatPasswordControl"));
+
+        repeatPasswordInput.sendKeys("password");
+
+        WebElement securityQuestionInput = driver.findElement(By.name("securityQuestion"));
+
+        securityQuestionInput.click();
+
+        WebElement securityQuestionList = driver.findElement(By.xpath("//div[@aria-label='Selection list for the security question']"));
+
+        securityQuestionList.findElements(By.tagName("mat-option")).get(1).click();
+
+        WebElement securityAnswerInput = driver.findElement(By.id("securityAnswerControl"));
+
+        securityAnswerInput.sendKeys("answer");
+
+        WebElement registerButton = driver.findElement(By.id("registerButton"));
+
+        registerButton.click();
+
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(By.id("email")));
 
         assertEquals("http://localhost:3000/#/login", driver.getCurrentUrl());
 
