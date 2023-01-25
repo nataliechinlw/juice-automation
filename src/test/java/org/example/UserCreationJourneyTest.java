@@ -30,6 +30,8 @@ public class UserCreationJourneyTest {
 
         submitButton.click();
 
+        try { driver.findElement(By.xpath("//simple-snack-bar/div/button")).click(); } catch (Exception e) {}
+
         WebElement accountButton = driver.findElement(By.id("navbarAccount"));
 
         accountButton.click();
@@ -76,7 +78,9 @@ public class UserCreationJourneyTest {
 
         registerButton.click();
 
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(By.id("email")));
+        new WebDriverWait(driver, Duration.ofSeconds(1)).until(
+                ExpectedConditions.textToBePresentInElement(driver.findElement(By.xpath("//simple-snack-bar/span")), "Registration completed successfully. You can now log in.")
+        );
 
         assertEquals("http://localhost:3000/#/login", driver.getCurrentUrl());
 
