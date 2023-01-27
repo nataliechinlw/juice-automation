@@ -10,7 +10,9 @@ pipeline {
 
     stage('Build') {
       steps {
-        sh 'sh \'./gradlew clean build\''
+        sh '''echo PATH = ${PATH}
+echo "Script executed from: ${PWD}"
+sh \'./gradlew clean build\''''
       }
     }
 
