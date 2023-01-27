@@ -10,8 +10,14 @@ pipeline {
 
     stage('Build') {
       steps {
-        sh '''echo PATH = ${PATH}
-echo "Script executed from: ${PWD}"
+        sh '''echo "Script executed from: ${PWD}"
+
+search_dir=${PWD}
+for entry in "$search_dir"/*
+do
+  echo "$entry"
+done
+
 sh \'./gradlew clean build\''''
       }
     }
