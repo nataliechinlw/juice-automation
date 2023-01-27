@@ -4,7 +4,7 @@ pipeline {
     stage('Hello World') {
       steps {
         echo 'hello world'
-        git(url: 'https://github.com/nataliechinlw/juice-automation', changelog: true, poll: true)
+        git(url: 'https://github.com/nataliechinlw/juice-automation', changelog: true, poll: true, branch: '*/main')
       }
     }
 
