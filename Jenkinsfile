@@ -15,7 +15,7 @@ pipeline {
 search_dir=${PWD}
 for entry in "$search_dir"/*
 do
-  echo "$entry"
+echo "$entry"
 done
 
 sh \'./gradlew clean build\''''
