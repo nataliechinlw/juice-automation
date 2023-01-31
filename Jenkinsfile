@@ -10,15 +10,7 @@ pipeline {
 
     stage('Build') {
       steps {
-        sh '''echo "Script executed from: ${PWD}"
-
-search_dir=${PWD}
-for entry in "$search_dir"/*
-do
-echo "$entry"
-done
-
-./gradlew clean build'''
+        sh './gradlew clean build'
       }
     }
 
