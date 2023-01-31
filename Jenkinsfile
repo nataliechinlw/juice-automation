@@ -18,7 +18,7 @@ do
 echo "$entry"
 done
 
-sh \'./gradlew clean build\''''
+./gradlew clean build'''
       }
     }
 
