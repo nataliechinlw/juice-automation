@@ -1,7 +1,5 @@
 pipeline {
-  agent {
-    docker { image 'node:16.13.1-alpine' }
-  }
+  agent any
   stages {
     stage('Checkout') {
       steps {
@@ -11,6 +9,12 @@ pipeline {
     }
 
     stage('Build') {
+      agent {
+        docker {
+          image 'bkimminich/juice-shop'
+        }
+
+      }
       steps {
         sh './gradlew clean build'
       }
