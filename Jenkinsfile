@@ -1,20 +1,6 @@
 pipeline {
   agent any
   stages {
-    stage('Checkout') {
-      steps {
-        git(url: 'https://github.com/juice-shop/juice-shop.git', branch: 'master')
-        sh '''search_dir=${PWD}
-for entry in "$search_dir"/*
-do
-echo "$entry"
-done
-
-npm install
-npm start'''
-      }
-    }
-
     stage('Build') {
       agent {
         docker {
