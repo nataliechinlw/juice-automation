@@ -4,7 +4,10 @@ pipeline {
     stage('Checkout') {
       steps {
         checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/nataliechinlw/juice-automation']]])
-        sh 'docker run -d --rm -p 3000:3000 bkimminich/juice-shop'
+        git(url: 'https://github.com/juice-shop/juice-shop.git', branch: 'master')
+        sh '''cd juice-shop
+npm install
+npm start'''
       }
     }
 
