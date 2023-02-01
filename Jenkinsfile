@@ -5,9 +5,7 @@ pipeline {
       agent {
         docker {
           image 'bkimminich/juice-shop'
-          args '''-p 3000:3000
---user root
--v /var/run/docker.sock:/var/run/docker.sock'''
+          args '-p 3000:3000'
         }
 
       }
