@@ -3,7 +3,6 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/nataliechinlw/juice-automation']]])
         git(url: 'https://github.com/juice-shop/juice-shop.git', branch: 'master')
         sh '''search_dir=${PWD}
 for entry in "$search_dir"/*
@@ -11,7 +10,6 @@ do
 echo "$entry"
 done
 
-cd ../juice-shop
 npm install
 npm start'''
       }
