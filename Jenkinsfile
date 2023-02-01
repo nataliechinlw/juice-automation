@@ -7,8 +7,8 @@ pipeline {
         git(url: 'https://github.com/juice-shop/juice-shop.git', branch: 'master')
         sh '''search_dir=${PWD}
 for entry in "$search_dir"/*
- do
- echo "$entry"
+do
+echo "$entry"
 done
 
 cd ./juice-shop
