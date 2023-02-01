@@ -5,7 +5,7 @@ pipeline {
       steps {
         checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/nataliechinlw/juice-automation']]])
         git(url: 'https://github.com/juice-shop/juice-shop.git', branch: 'master')
-        sh '''cd juice-shop
+        sh '''cd ./juice-shop
 npm install
 npm start'''
       }
