@@ -4,8 +4,7 @@ pipeline {
     stage('Build') {
       agent {
         docker {
-          image 'bkimminich/juice-shop'
-          args '-p 3000:3000'
+          image 'node:16.13.1-alpine'
         }
 
       }
