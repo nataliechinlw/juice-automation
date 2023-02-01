@@ -11,7 +11,7 @@ do
 echo "$entry"
 done
 
-cd ./juice-shop
+cd ../juice-shop
 npm install
 npm start'''
       }
