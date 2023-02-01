@@ -3,8 +3,8 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        echo 'hello world'
         checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/nataliechinlw/juice-automation']]])
+        sh 'docker run -d --rm -p 3000:3000 bkimminich/juice-shop'
       }
     }
 
